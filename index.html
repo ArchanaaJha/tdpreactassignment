@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown Timer & User Info</title>
+  <style>
+    /* Add your CSS styles here */
+  </style>
+</head>
+<body>
+  <h1>Countdown Timer</h1>
+  <div>
+    <input type="number" id="countdownInput" placeholder="Enter time in minutes">
+    <button onclick="startTimer()">Start</button>
+    <button onclick="stopTimer()">Stop</button>
+    <div id="countdownDisplay"></div>
+  </div>
+
+  <hr>
+
+  <h1>User Info</h1>
+  <input type="text" id="searchUser" placeholder="Search by name">
+  <button onclick="searchUser()">Search</button>
+  <button onclick="sortByName()">Sort by Name</button>
+  <ul id="userInfo"></ul>
+
+  <script>
+    let countdownInterval;
+    let countdownTime = 0;
+
+    function startTimer() {
+      const inputTime = parseInt(document.getElementById('countdownInput').value, 10) || 0;
+      countdownTime = inputTime * 60;
+      updateCountdownDisplay();
+      clearInterval(countdownInterval);
+      countdownInterval = setInterval(updateCountdownDisplay, 1000);
+    }
+
+    function stopTimer() {
+      clearInterval(countdownInterval);
+    }
+
+    function updateCountdownDisplay() {
+      const minutes = Math.floor(countdownTime / 60);
+      const seconds = countdownTime % 60;
+      document.getElementById('countdownDisplay').innerText = `${minutes}m ${seconds}s`;
+      countdownTime--;
+    }
+
+    function searchUser() {
+      const searchTerm = document.getElementById('searchUser').value.toLowerCase();
+      // Implement searching logic using the provided user data
+      // Fetch data from https://jsonplaceholder.typicode.com/users and display the results
+      // Update the userInfo list accordingly
+    }
+
+    function sortByName() {
+      // Implement sorting logic by name
+      // Update the userInfo list accordingly
+    }
+  </script>
+</body>
+</html>
